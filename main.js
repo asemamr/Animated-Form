@@ -1,7 +1,9 @@
 let containers = document.querySelectorAll("form .input-container")
 let box = document.querySelector("body .box");
 let tl = gsap.timeline({defaults: {duration: 1}});
-
+let validEmail = false;
+let validName = false;
+let validPhone = false;
 
 //Line
 const start = "M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512";
@@ -45,6 +47,7 @@ containers.forEach((container) => {
       let inputText = e.target.value
       if (inputText.length > 3) {
         colorize('#6190e8', line, placeholder);
+        validName = true;
       }
       else {
         colorize("#FE8C99", line, placeholder);
@@ -54,6 +57,7 @@ containers.forEach((container) => {
       let valid = validateEmail(e.target.value);
       if (valid) {
         colorize("#6190e8", line, placeholder);
+        validEmail = true;
       }
       else {
         colorize("#FE8C99", line, placeholder);
@@ -63,6 +67,7 @@ containers.forEach((container) => {
       let valid = validatePhone(e.target.value);
       if (valid) {
         colorize("#6190e8", line, placeholder);
+        validPhone = true;
       }
       else {
         colorize("#FE8C99", line, placeholder);
@@ -125,8 +130,11 @@ let tl3 = gsap.timeline({defaults: {duration: 0.75, ease: 'Power2.easeOut'}});
 gsap.set('.box > svg #hand', {transformOrigin: "left"})
 button.addEventListener("click", (e)=>{
   e.preventDefault();
-  tl3.to(".content, form", {y: 30, opacity: 0, pointerEvents: "none"});
-  tl3.to('.box', {scale: 0.8}, "<");
-  tl3.fromTo('.box .submitted', {y: 30}, {y: 0, opacity: 1})
-  tl3.to('.box > svg #hand', {rotation: -10, y: 3, duration: 2, ease: 'elastic(3,0.2)'}, "<50%")
+
+  if (validEmail && validName && validPhone) {
+    tl3.to(".content, form", {y: 30, opacity: 0, pointerEvents: "none"});
+    tl3.to('.box', {scale: 0.8}, "<");
+    tl3.fromTo('.box .submitted', {y: 30}, {y: 0, opacity: 1})
+    tl3.to('.box > svg #hand', {rotation: -10, y: 3, duration: 2, ease: 'elastic(3,0.2)'}, "<50%")
+  }
 })
