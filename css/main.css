@@ -1,0 +1,160 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(90deg, #6190e8, #a7bfe8);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  min-width: 40vw;
+  background-color: white;
+  padding: 3rem 5rem;
+  border-radius: 2rem;
+  display: flex;
+  gap: 20px;
+  color: #777474;
+  position: relative;
+}
+.box > div, form {
+  flex: 1;
+}
+.box .content h1 {
+  color: #6190e8;
+  font-weight: 600;
+}
+.box .content p {
+  font-size: 15px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 25vh;
+}
+form .input-container {
+  height: 30px;
+  position: relative;
+}
+form .input-container .input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #777474;
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+form .input-container .placeholder {
+  z-index: 1;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  color: #c0bfbf;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+  transform-origin: left;
+}
+form .input-container svg {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.promo-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.promo-container input{
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+.checkbox-container {
+  cursor: pointer;
+  position: relative;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.checkbox-container .checkmark, 
+.checkbox-container input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #c5c5c5;
+  
+  top: 0;
+  left: 0;
+}
+.promo-container .checkbox-label {
+  font-size: 12px;
+  color: #c5c5c5;
+  font-weight: 500;
+}
+.promo-container .checkbox-fill {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #6190e8;
+  top: 100%;
+  left: 0;
+}
+.promo-container svg {
+  transform-origin: center;
+  transform: scale(0.7);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: auto;
+}
+form > input {
+  background-color: #6190e8;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  align-self: flex-start;
+  padding: 0.3rem 2rem;
+  cursor: pointer;
+  font-size: 12px;
+}
+.box > svg {
+  transform: scale(0.5);
+  transform-origin: bottom;
+  position: absolute;
+  bottom: -40px;
+  left: -50px;
+}
+.box .submitted {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .box {
+    flex-direction: column;
+  }
+  .box > svg {
+    transform: scale(0.4);
+    left: -70px;
+  }
+}
